@@ -40,8 +40,8 @@ class DiscordXp {
   }
 
   /**
-  * @param {string} [userId] - Discord user id.
-  * @param {string} [guildId] - Discord guild id.
+  * @param {string} [userId] - User id.
+  * @param {string} [guildId] - Guild id.
   */
 
   static async deleteUser(userId, guildId) {
@@ -57,8 +57,8 @@ class DiscordXp {
   }
 
   /**
-  * @param {string} [userId] - Discord user id.
-  * @param {string} [guildId] - Discord guild id.
+  * @param {string} [userId] - User id.
+  * @param {string} [guildId] - Guild id.
   * @param {number} [xp] - Amount of xp to append.
   */
 
@@ -91,8 +91,8 @@ class DiscordXp {
   }
 
   /**
-  * @param {string} [userId] - Discord user id.
-  * @param {string} [guildId] - Discord guild id.
+  * @param {string} [userId] - User id.
+  * @param {string} [guildId] - Guild id.
   * @param {number} [levels] - Amount of levels to append.
   */
 
@@ -157,8 +157,8 @@ class DiscordXp {
   }
 
   /**
-  * @param {string} [userId] - Discord user id.
-  * @param {string} [guildId] - Discord guild id.
+  * @param {string} [userId] - User id.
+  * @param {string} [guildId] - Guild id.
   */
 
   static async fetch(userId, guildId, fetchPosition = false) {
@@ -183,8 +183,8 @@ class DiscordXp {
   }
 
   /**
-  * @param {string} [userId] - Discord user id.
-  * @param {string} [guildId] - Discord guild id.
+  * @param {string} [userId] - User id.
+  * @param {string} [guildId] - Guild id.
   * @param {number} [xp] - Amount of xp to subtract.
   */
 
@@ -206,8 +206,8 @@ class DiscordXp {
   }
 
   /**
-  * @param {string} [userId] - Discord user id.
-  * @param {string} [guildId] - Discord guild id.
+  * @param {string} [userId] - User id.
+  * @param {string} [guildId] - Guild id.
   * @param {number} [levels] - Amount of levels to subtract.
   */
 
@@ -228,7 +228,7 @@ class DiscordXp {
   }
 
   /**
-  * @param {string} [guildId] - Discord guild id.
+  * @param {string} [guildId] - Guild id.
   * @param {number} [limit] - Amount of maximum enteries to return.
   */
 
@@ -243,7 +243,7 @@ class DiscordXp {
   }
 
   /**
-  * @param {string} [client] - Your Discord.CLient.
+  * @param {string} [client] - Your Client.
   * @param {array} [leaderboard] - The output from 'fetchLeaderboard' function.
   */
 
@@ -257,10 +257,9 @@ class DiscordXp {
 
     if (fetchUsers) {
       for (const key of leaderboard) {
-        const user = await client.users.fetch(key.userID);
         computedArray.push({
           guildID: key.guildID,
-          userID: key.userID.replace('@c.us', ''),
+          userID: key.userID,
           xp: key.xp,
           level: key.level,
           position: (leaderboard.findIndex(i => i.guildID === key.guildID && i.userID === key.userID) + 1),
@@ -269,7 +268,7 @@ class DiscordXp {
     } else {
       leaderboard.map(key => computedArray.push({
         guildID: key.guildID,
-        userID: key.userID.replace('@c.us', ''),
+        userID: key.userID,
         xp: key.xp,
         level: key.level,
         position: (leaderboard.findIndex(i => i.guildID === key.guildID && i.userID === key.userID) + 1),
