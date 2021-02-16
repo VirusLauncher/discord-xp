@@ -54,21 +54,20 @@ Levels.setURL("mongodb://..."); // You only need to do this ONCE per process.
 
 ```js
 client.on("message", async (message) => {
-  if (!message.guild) return;
-  if (message.author.bot) return;
+  if (!message.chat.id) return;
   
   const randomAmountOfXp = Math.floor(Math.random() * 29) + 1; // Min 1, Max 30
-  const hasLeveledUp = await Levels.appendXp(message.author.id, message.guild.id, randomAmountOfXp);
+  const hasLeveledUp = await Levels.appendXp(message.sender.id, message.chat.id, randomAmountOfXp);
   if (hasLeveledUp) {
-    const user = await Levels.fetch(message.author.id, message.guild.id);
-    message.channel.send(`${message.author}, congratulations! You have leveled up to **${user.level}**. :tada:`);
+    const user = await Levels.fetch(message.sender.id, message.chat.id);
+    client.sendTextWithMentions(message.from, `@${message.sender.id}, congratulations! You have leveled up to *${user.level}*. `);
   }
 });
 ```
 - **Rank Command**
 
 ```js
-const target = message.mentions.users.first() || message.author; // Grab the target.
+const target = message.sender.id; // Grab the target.
 
 const user = await Levels.fetch(message.sender.id, message.chat.id); // Selects the target from the database.
 
