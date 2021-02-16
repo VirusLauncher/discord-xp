@@ -51,13 +51,11 @@ client.on("message", async (message) => {
 - **Rank Command**
 
 ```js
-const target = message.sender.id; // Grab the target.
-
 const user = await Levels.fetch(message.sender.id, message.chat.id); // Selects the target from the database.
 
 if (!user) return message.channel.send("Seems like this user has not earned any xp so far."); // If there isnt such user in the database, we send a message in general.
 
-client.sendTextWithMentions(message.from, `> *@${target.tag}* is currently level ${user.level}.`); // We show the level.
+client.sendTextWithMentions(message.from, `> *@${message.sender.id}* is currently level ${user.level}.`); // We show the level.
 ```
 
 - **Leaderboard Command**
