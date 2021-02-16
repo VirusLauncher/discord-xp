@@ -19,7 +19,7 @@ class DiscordXp {
 
   /**
   * @param {string} [userId] - User id.
-  * @param {string} [guildId] - Guild id.
+  * @param {string} [guildId] - Chat id.
   */
 
   static async createUser(userId, guildId) {
@@ -41,7 +41,7 @@ class DiscordXp {
 
   /**
   * @param {string} [userId] - User id.
-  * @param {string} [guildId] - Guild id.
+  * @param {string} [guildId] - Chat id.
   */
 
   static async deleteUser(userId, guildId) {
@@ -58,7 +58,7 @@ class DiscordXp {
 
   /**
   * @param {string} [userId] - User id.
-  * @param {string} [guildId] - Guild id.
+  * @param {string} [guildId] - Chat id.
   * @param {number} [xp] - Amount of xp to append.
   */
 
@@ -92,7 +92,7 @@ class DiscordXp {
 
   /**
   * @param {string} [userId] - User id.
-  * @param {string} [guildId] - Guild id.
+  * @param {string} [guildId] - Chat id.
   * @param {number} [levels] - Amount of levels to append.
   */
 
@@ -113,8 +113,8 @@ class DiscordXp {
   }
 
   /**
-  * @param {string} [userId] - Discord user id.
-  * @param {string} [guildId] - Discord guild id.
+  * @param {string} [userId] - User id.
+  * @param {string} [guildId] - Chat id.
   * @param {number} [xp] - Amount of xp to set.
   */
 
@@ -135,8 +135,8 @@ class DiscordXp {
   }
 
   /**
-  * @param {string} [userId] - Discord user id.
-  * @param {string} [guildId] - Discord guild id.
+  * @param {string} [userId] - User id.
+  * @param {string} [guildId] - Chat id.
   * @param {number} [level] - A level to set.
   */
 
@@ -158,7 +158,7 @@ class DiscordXp {
 
   /**
   * @param {string} [userId] - User id.
-  * @param {string} [guildId] - Guild id.
+  * @param {string} [guildId] - Chat id.
   */
 
   static async fetch(userId, guildId, fetchPosition = false) {
@@ -184,7 +184,7 @@ class DiscordXp {
 
   /**
   * @param {string} [userId] - User id.
-  * @param {string} [guildId] - Guild id.
+  * @param {string} [guildId] - Chat id.
   * @param {number} [xp] - Amount of xp to subtract.
   */
 
@@ -207,7 +207,7 @@ class DiscordXp {
 
   /**
   * @param {string} [userId] - User id.
-  * @param {string} [guildId] - Guild id.
+  * @param {string} [guildId] - Chat id.
   * @param {number} [levels] - Amount of levels to subtract.
   */
 
@@ -228,7 +228,7 @@ class DiscordXp {
   }
 
   /**
-  * @param {string} [guildId] - Guild id.
+  * @param {string} [guildId] - Chat id.
   * @param {number} [limit] - Amount of maximum enteries to return.
   */
 
