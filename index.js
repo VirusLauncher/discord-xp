@@ -18,8 +18,8 @@ class DiscordXp {
   }
 
   /**
-  * @param {string} [userId] - Discord user id.
-  * @param {string} [guildId] - Discord guild id.
+  * @param {string} [userId] - User id.
+  * @param {string} [guildId] - Guild id.
   */
 
   static async createUser(userId, guildId) {
