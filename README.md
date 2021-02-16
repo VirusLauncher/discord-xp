@@ -26,7 +26,7 @@ After that, you need to provide a valid mongo database url, and set it. You can 
 Levels.setURL("mongodb://..."); // You only need to do this ONCE per process.
 ```
 
-# Examples
+# Examples - Edited for Whatsapp Bots
 *Examples assume that you have setted up the module as presented in 'Setting Up' section.*
 *Following examples assume that your client is called `client`.*
 
@@ -71,8 +71,6 @@ const lb = leaderboard.map(e => `${e.position}. @${e.userID.replace('@c.us', '')
 
 client.sendTextWithMentions(message.from, `*Leaderboard*:\n\n${lb.join("\n\n")}`);
 ```
-
-*Is time for you to get creative..*
 
 # Methods
 **createUser**
