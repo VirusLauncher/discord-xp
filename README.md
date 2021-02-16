@@ -70,25 +70,25 @@ client.on("message", async (message) => {
 ```js
 const target = message.mentions.users.first() || message.author; // Grab the target.
 
-const user = await Levels.fetch(target.id, message.guild.id); // Selects the target from the database.
+const user = await Levels.fetch(message.sender.id, message.chat.id); // Selects the target from the database.
 
 if (!user) return message.channel.send("Seems like this user has not earned any xp so far."); // If there isnt such user in the database, we send a message in general.
 
-message.channel.send(`> **${target.tag}** is currently level ${user.level}.`); // We show the level.
+client.sendTextWithMentions(message.from, `> *@${target.tag}* is currently level ${user.level}.`); // We show the level.
 ```
 
 - **Leaderboard Command**
 
 ```js
-const rawLeaderboard = await Levels.fetchLeaderboard(message.guild.id, 10); // We grab top 10 users with most xp in the current server.
+const rawLeaderboard = await Levels.fetchLeaderboard(message.chat.id, 10); // We grab top 10 users with most xp in the current server.
 
-if (rawLeaderboard.length < 1) return reply("Nobody's in leaderboard yet.");
+if (rawLeaderboard.length < 1) return client.reply(message.from, "Nobody's in leaderboard yet.", message.id);
 
-const leaderboard = await Levels.computeLeaderboard(client, rawLeaderboard, true); // We process the leaderboard.
+const leaderboard = await Levels.computeLeaderboard(client, rawLeaderboard, false); // We process the leaderboard.
 
-const lb = leaderboard.map(e => `${e.position}. ${e.username}#${e.discriminator}\nLevel: ${e.level}\nXP: ${e.xp.toLocaleString()}`); // We map the outputs.
+const lb = leaderboard.map(e => `${e.position}. @${e.userID.replace('@c.us', '')}\nLevel: ${e.level}\nXP: ${e.xp.toLocaleString()}`); // We map the outputs.
 
-message.channel.send(`**Leaderboard**:\n\n${lb.join("\n\n")}`);
+client.sendTextWithMentions(message.from, `*Leaderboard*:\n\n${lb.join("\n\n")}`);
 ```
 
 *Is time for you to get creative..*
